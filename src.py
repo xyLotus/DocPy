@@ -4,17 +4,18 @@ a commandline interface environment.
 It is also very handy for creating HTML Documentations.
 """
 
-"""
-NOTE TO MYSELF (READ)
-
-Catch index error @method = p, paragraph
-"""
-
 __author__ = 'Lotus'
-__version__ = 0.1
+__version__ = 0.5
 
 # Imports
 import os
+
+# External Imports
+try:
+    from bs4 import BeautifulSoup
+except ImportError as e:
+    print('Error while trying to import external libary.')
+    print('Traceback:\n', e)
 
 # Create Back-up File
 if not os.path.isfile(f'{os.getcwd()}\\backup.txt'):
@@ -27,7 +28,7 @@ def call_method(cls: object, function: str, args: list):
     try:
         getattr(cls, function)(args)
     except Exception:
-        getattr(cls, function)()
+        getattr(cls, function)('')
 
 def error(txt: str):
     """ Outputs string in error format. """
@@ -44,12 +45,14 @@ class Document:
     content = ''
     css_file = ''
     body_content = ''
+    background = ''
 
 
 doc = Document()
 
+# Global Function (includes mandatory object to work [doc | @Document])
 def append_content(additional_content: str):
-    """ Appends the content (@file = htmldoc, @tag =<body>). """
+    """ Appends the content (@file = htmldoc, @tag = <body>). """
     doc.content += additional_content + '\n'
 
 
@@ -58,6 +61,7 @@ class FileStream:
     def __init__(self):
         #====FileDataVars====#
         self.open_bool = False
+        self.new_bool = False
         self.file = ''
         self.file_str = ''
         #====================#
@@ -84,13 +88,52 @@ class FileStream:
             f.write(self.skeleton)
         
     def get_content(self, file_name: str):
+        """ Gets the whole content of a given file. """
         with open(file_name, 'r') as f:
             return f.read()
-        
+
     def backup(self):
+        """ backs up the current htmldoc content in backup.txt """
         with open('backup.txt', 'w') as f:
             f.write(self.get_content(self.file))
 
+    @staticmethod
+    def insert_line(src: list, line: str, pos: int) -> list:
+        """ Inserts line @pos in src [list]. """
+        src = src[:pos] + [line] + src[pos:]
+        return src
+
+    def insert_content_tag(self, search_kw: str) -> bool:
+        """ Method that inserts {content} before the </body> tag, if {content} is non existent. """
+        content_tag = '  {content}'
+        str_instance = self.file_str.splitlines()
+        line_count = 0
+        for line in str_instance:
+            if not content_tag in line:
+                if search_kw in line:
+                    print('FOUND L')
+                    str_instance = self.insert_line(
+                                                    src = str_instance, 
+                                                    line = content_tag, 
+                                                    pos = line_count
+                                                   )
+                self.file_str = ''
+                for line in str_instance:
+                    self.file_str += line + '\n'
+
+                with open(self.file, 'w') as f:
+                    f.write(self.file_str)
+            else:
+                return
+            line_count += 1
+
+    def update_doc(self, src: str):
+        """ Method that updates htmldoc with prettified HTML and inserted {config}. """
+        with open(file_stream.file, 'w') as f:
+            bs4_doc = BeautifulSoup(src, 'html.parser')
+            f.write(bs4_doc.prettify())
+
+        file_stream.insert_content_tag('</body>')
 
 file_stream = FileStream()
 
@@ -103,14 +146,17 @@ class Commands:
     #====FileCommands====#
     def open(self, args):
         """ Method that opens the given file. """
-        file_stream.open_bool = True
+        if not file_stream.new_bool:
+            file_stream.open_bool = True
+
         cwd = os.getcwd()
         if os.path.isfile(f'{cwd}\\{args[0]}'):
-            print(f'Opening [{args[0]}]...')
             file_stream.file = args[0]
 
             with open(file_stream.file, 'r') as f:
                 file_stream.file_str = f.read()
+            
+            file_stream.insert_content_tag('</body>')
         else:
             error(f'Couldnt find [{args[0]}]')
         
@@ -118,6 +164,7 @@ class Commands:
 
     def new(self, args):
         """ Method that creates a new file. """
+        file_stream.new_bool = True
         cwd = os.getcwd()
         if not os.path.isfile(f'{cwd}\\{args[0]}'):
             print(f'Creating [{args[0]}]...')
@@ -133,15 +180,17 @@ class Commands:
     
     def fin(self):
         """ Method responsible for finishing htmldoc. """
-        doc.content += '    {content}'
+        doc.content += '   {content }'
         if file_stream.open_bool:
             content_instance = file_stream.file_str.format(content = doc.content)
         else:
-            content_instance = file_stream.file_str.format(title = doc.title, 
-                                                           lang = doc.lang, 
-                                                           char = doc.charset, 
-                                                           author = doc.author, 
-                                                           content = doc.content)
+            content_instance = file_stream.file_str.format(
+                                                        title = doc.title, 
+                                                        lang = doc.lang, 
+                                                        char = doc.charset, 
+                                                        author = doc.author, 
+                                                        content = doc.content
+                                                        )
 
         with open(file_stream.file, 'w') as f:
             f.write(content_instance)
@@ -153,22 +202,21 @@ class Commands:
         answer = input('           -> ')
         if answer.upper() == 'Y':
             print('Saving changes...')
-            doc.content += '    {content}'
             if file_stream.open_bool:
                 content_instance = file_stream.file_str.format(content = doc.content)
+                file_stream.update_doc(content_instance)
             else:
-                content_instance = file_stream.file_str.format(title = doc.title, 
-                                                               lang = doc.lang, 
-                                                               char = doc.charset, 
-                                                               author = doc.author, 
-                                                               content = doc.content)
+                content_instance = file_stream.file_str.format(
+                                                           title = doc.title, 
+                                                           lang = doc.lang, 
+                                                           char = doc.charset, 
+                                                           author = doc.author, 
+                                                           content = doc.content,
+                                                           background = doc.background
+                                                           )
+                file_stream.update_doc(content_instance)
 
-            with open(file_stream.file, 'w') as f:
-                f.write(content_instance)
-        
             print(f'Updated [{file_stream.file}]!')
-            print(f'File [{file_stream.file}] attributes are not modifiable anymore.')
-            print('^- Except: content')
         elif answer.upper() == 'N':
             print('Changes not saved.')
     #====================#
@@ -181,18 +229,18 @@ class Commands:
             if not index_count == len(args)-1:
                 print(arg, end=' ')
             else:
-                print(arg) 
+                print(arg)
             index_count += 1
 
-    def cls(self):
+    def cls(self, args):
         """ Method that clears the commandline interface. """
         os.system('cls')
     
-    def exit(self):
+    def exit(self, args):
         """ Method that exits the program. """
         exit()
     
-    def getfile(self):
+    def getfile(self, args):
         """ Method that outputs the current file. [See: @FileStream] """
         if len(file_stream.file) > 0:
             print('Current Working File: ', file_stream.file)
@@ -224,16 +272,31 @@ class Commands:
     #====================#
 
     #====FileEditing====#
+    def background(self, args):
+        """ Command that sets background color in htmldoc. """
+        doc.background = args[0]
+
+    def delete(self, args):
+        """ Command that deletes everything in content. """
+        print('Are you sure that you want to delete all of the <body> content? (Y/N)')
+        answer = input('')
+        if answer.upper() == 'Y':
+            print('<body> content cleared!')
+            doc.content = ''
+        elif answer.upper() == 'N':
+            print('<body> content not cleared.')
+
     def coloring(self, args):
-        if args[0].upper() == 'TRUE':
-            print('wow')
+        """ Command that auto-colors the given htmldoc element to the given color. """
+        if args[0].upper() in ['TRUE', 'ON']:
             self.auto_coloring = True
-        elif args[0].upper() == 'FALSE':
-            print('not wow')
+            print('Auto-Coloring: On')
+        elif args[0].upper() == ['FALSE', 'OFF']:
             self.auto_coloring = False
+            print('Auto-Coloring: Off')
         else:
-            print('XD')
             self.auto_color = args[0]       
+            print('Set auto-coloring to: [', args[0], ']')
 
     def header(self, args):
         """ Creates given header with given size in htmldoc. """
@@ -250,8 +313,8 @@ class Commands:
 
             header_info = f'<h{args[0]} style="color:{color_str}";>{args[1]}</h{args[0]}>'
             append_content(header_info)
-
             print(f'Created HTML Document Element [{header_info}]')
+
             file_stream.backup()
         except IndexError:
             error(f'Command called takes more more than [{len(args)}] arguments')
@@ -291,8 +354,8 @@ class Commands:
 
             header_info = f'<h{args[0]} style="color:{color_str}";>{args[1]}</h{args[0]}>'
             append_content(header_info)
-
             print(f'Created HTML Document Element [{header_info}]')
+
             file_stream.backup()
         except IndexError:
             error(f'Command called takes more more than [{len(args)}] arguments')
@@ -313,7 +376,26 @@ class Commands:
         paragraph_str = f'<p style="color:{color_str}">{args[0]}</p>'
         append_content(paragraph_str)
         print(f'Created HTML Document Element [{paragraph_str}]')
+
         file_stream.backup()
+
+    def ac(self, args):
+        """ Command that auto-colors the given htmldoc element to the given color. """
+        # NOTE -> This is a alternative version of the coloring method
+        if args[0].upper() == 'TRUE':
+            self.auto_coloring = True
+            print('Auto-Coloring: On')
+        elif args[0].upper() == 'FALSE':
+            self.auto_coloring = False
+            print('Auto-Coloring: Off')
+        else:
+            self.auto_color = args[0]
+            print('Set auto-coloring to: [', args[0], ']')
+    
+    def bg(self, args):
+        """ Command that sets background color in htmldoc. """
+        # NOTE -> This is a alternative version of the background method
+        doc.background = args[0]
     #=========================#
 
 
@@ -347,9 +429,9 @@ class Commandline:
                         else:
                             call_method(cmds, base_cmd, cmd_args)
                 except AttributeError:
-                    error(f'Command [{base_cmd}] could not be found.')
+                    error(f'Command [{base_cmd}] could not be found')
                 except IndexError:
-                    error(f'Command [{base_cmd}] called with wrong args -> index error')
+                    error(f'Command [{base_cmd}] requires more than the [{len(cmd_args)}] given arguments')
                 
 
 # Commandline init
