@@ -137,7 +137,11 @@ class Commands:
         if file_stream.open_bool:
             content_instance = file_stream.file_str.format(content = doc.content)
         else:
-            content_instance = file_stream.file_str.format(title = doc.title, lang = doc.lang, char = doc.charset, author = doc.author, content = doc.content)
+            content_instance = file_stream.file_str.format(title = doc.title, 
+                                                           lang = doc.lang, 
+                                                           char = doc.charset, 
+                                                           author = doc.author, 
+                                                           content = doc.content)
 
         with open(file_stream.file, 'w') as f:
             f.write(content_instance)
@@ -153,7 +157,11 @@ class Commands:
             if file_stream.open_bool:
                 content_instance = file_stream.file_str.format(content = doc.content)
             else:
-                content_instance = file_stream.file_str.format(title = doc.title, lang = doc.lang, char = doc.charset, author = doc.author, content = doc.content)
+                content_instance = file_stream.file_str.format(title = doc.title, 
+                                                               lang = doc.lang, 
+                                                               char = doc.charset, 
+                                                               author = doc.author, 
+                                                               content = doc.content)
 
             with open(file_stream.file, 'w') as f:
                 f.write(content_instance)
