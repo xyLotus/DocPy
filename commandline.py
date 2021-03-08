@@ -295,7 +295,18 @@ class Commands:
         else:
             self.auto_color = args[0]       
             print('Set auto-coloring to: [', args[0], ']')
+            
+    def code(self, args):
+        """ Creates code tag with given content. """
+        # Command Info: (NOTE -> zero-indexed)
+        # Arg1 = CodeTagContent
+        c_code, color_str = self._construct_txt(src = args, param_index = 0)
+        
+        code_content = f'<code style="color:{color_str}>{c_code}</code>'
+        append_content(code_content)
 
+        file_stream.backup()
+    
     def header(self, args):
         """ Creates given header with given size in htmldoc. """
         # Command Info: (NOTE -> zero-indexed)
@@ -336,6 +347,18 @@ class Commands:
     #=================#
 
     #===CommandAlternatives===#
+    def c(self, args):
+        """ Creates code tag with given content. """
+        # Command Info: (NOTE -> zero-indexed)
+        # Arg1 = CodeTagContent
+        # NOTE -> This is a alternative version of the code method
+        c_code, color_str = self._construct_txt(src = args, param_index = 0)
+        
+        code_content = f'<code style="color:{color_str}>{c_code}</code>'
+        append_content(code_content)
+
+        file_stream.backup()
+
     def h(self, args):
         """ Creates given header with given size in htmldoc. """
         # Command Info: (NOTE -> zero-indexed)
