@@ -14,7 +14,7 @@ DocumentPy is a Python application that runs in a commandline interface environm
 | header, h     | Size, Text        | Creating a header with the given text and size           |
 | coloring, c   | Color             | Changing the auto coloring of a HTML Document Element    |
 
-# Document Information Commands
+# Document Information Editing Commands
 | Command       | Arguments         | Porpuse                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
 | lang          | New_Language      | Changes document language to given lang                  |
@@ -22,7 +22,7 @@ DocumentPy is a Python application that runs in a commandline interface environm
 | charset       | New_Charset       | Changes the charset to the given charset in the document |
 | author        | New_Author        | Changes the author to the given author in the document   |
 
-# Commandline Flow Control Commands
+# Commandline IO & Flow Control Commands
 | Command       | Arguments         | Porpuse                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
 | out           | Output_Text       | Outputs text into the commandline interface environment  |
