@@ -35,8 +35,10 @@
 | `getfile`       |                   | Outputs the current file the commandline is workng in  |
 
 ## Usage
+![Preview](https://user-images.githubusercontent.com/59749700/110297228-8af49f80-7ff3-11eb-9e83-e92aa595b7e8.gif)
 DocumentPy, as already said, is a commandline interface environment where you can design your own HTML document or HTML documentations.
-If you, for example, have some kind of new project on the line and want to quickly write a documentation for then don't worry, DocumentPy is your best friend!
+If you, for example, have some kind of new project on the line and want to quickly write a documentation for it, then don't worry, DocumentPy is your best friend!
+
 
 ## Requirements
 - Python 3.9
