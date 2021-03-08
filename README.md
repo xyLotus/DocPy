@@ -4,8 +4,6 @@
   <image src="https://img.shields.io/badge/Implementation-Python%203.9-%2300A3E0?style=flat-square">
 </p>
 
-
-
 <p>DocumentPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.</p>
 
 ## Usage
