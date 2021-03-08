@@ -1,4 +1,4 @@
-# DocPy
+<h1 align="center">DocumentPy</h1>
 DocPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.
 
 # Document Editing Commands
