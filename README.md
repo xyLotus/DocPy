@@ -32,4 +32,4 @@
 
 ## Usage
 DocumentPy, as already said, is a commandline interface environment where you can design your own HTML document or HTML documentations.
-If you, for example, have some kind of new project on the line and want to quickly write a documentation for then don't worry, DocumentPy is your best friend!![Uploading wallhaven-
+If you, for example, have some kind of new project on the line and want to quickly write a documentation for then don't worry, DocumentPy is your best friend!
