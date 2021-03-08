@@ -25,10 +25,11 @@
 ## Commandline IO & Flow Control Commands
 | Command       | Arguments         | Porpuse                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
-| `out`           | *Output_Text*       | Outputs text into the commandline interface environment  |
-| `cls`           |                   | Clears all the commandline interface input/output        |
-| `exit`          |                   | Exits the program                                        |
-| `getfile`       |                   | Outputs the current file the commandline is workng in    |
+| `out`           | *Output_Text*     | Outputs text into the commandline interface environment|
+| `background, bg`| *background_color*| Changes the doc's background to the given bg color     | 
+| `cls`           |                   | Clears all the commandline interface input/output      |
+| `exit`          |                   | Exits the program                                      |
+| `getfile`       |                   | Outputs the current file the commandline is workng in  |
 
 ## Usage
 DocumentPy, as already said, is a commandline interface environment where you can design your own HTML document or HTML documentations.
