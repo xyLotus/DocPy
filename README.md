@@ -1,5 +1,5 @@
 # DocPy
-DocPy is a Python application that runs in a commandline interface environment, made for creating HTML Documents.
+DocPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.
 
 # Document Editing Commands
 | Command       | Arguments     | Porpuse                                                |
