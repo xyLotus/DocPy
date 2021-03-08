@@ -13,7 +13,7 @@ If you, for example, have some kind of new project on the line and want to quick
 
 ## Command Tables
 ### Document Editing Commands
-| Command       | Arguments         | Porpuse                                                  |
+| Command       | Arguments         | Purpose                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
 | `paragraph, p`  | *Text*              | Creating a paragraph with a given text                   |
 | `header, h`     | *Size, Text*       | Creating a header with the given text and size           |
@@ -22,7 +22,7 @@ If you, for example, have some kind of new project on the line and want to quick
 
 
 ### Document Information Editing Commands
-| Command       | Arguments         | Porpuse                                                  |
+| Command       | Arguments         | Purpose                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
 | `lang`          | *New_Language*      | Changes document language to given lang                  |
 | `title`         | *New_Title*         | Changes the title to the given title in the document     |
@@ -31,7 +31,7 @@ If you, for example, have some kind of new project on the line and want to quick
 
 
 ### Commandline IO & Flow Control Commands
-| Command       | Arguments         | Porpuse                                                  |
+| Command       | Arguments         | Purpose                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
 | `out`           | *Output_Text*     | Outputs text into the commandline interface environment|
 | `cls`           |                   | Clears all the commandline interface input/output      |
