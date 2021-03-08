@@ -13,7 +13,7 @@
 | `paragraph, p`  | *Text*              | Creating a paragraph with a given text                   |
 | `header, h`     | *Size, Text*       | Creating a header with the given text and size           |
 | `coloring, c `  | *Color*            | Changing the auto coloring of a HTML Document Element    |
-| `background, bg`| *background_color*| Changes the doc's background to the given bg color     | 
+| `background, bg`| *Background_Color*| Changes the doc's background to the given bg color     | 
 
 
 ## Document Information Editing Commands
