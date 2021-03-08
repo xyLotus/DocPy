@@ -13,6 +13,8 @@
 | `paragraph, p`  | *Text*              | Creating a paragraph with a given text                   |
 | `header, h`     | *Size, Text*       | Creating a header with the given text and size           |
 | `coloring, c `  | *Color*            | Changing the auto coloring of a HTML Document Element    |
+| `background, bg`| *background_color*| Changes the doc's background to the given bg color     | 
+
 
 ## Document Information Editing Commands
 | Command       | Arguments         | Porpuse                                                  |
@@ -22,11 +24,11 @@
 | `charset`       | *New_Charset*       | Changes the charset to the given charset in the document |
 | `author`        | *New_Author*        | Changes the author to the given author in the document   |
 
+
 ## Commandline IO & Flow Control Commands
 | Command       | Arguments         | Porpuse                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
 | `out`           | *Output_Text*     | Outputs text into the commandline interface environment|
-| `background, bg`| *background_color*| Changes the doc's background to the given bg color     | 
 | `cls`           |                   | Clears all the commandline interface input/output      |
 | `exit`          |                   | Exits the program                                      |
 | `getfile`       |                   | Outputs the current file the commandline is workng in  |
