@@ -2,6 +2,9 @@
 
 <p align="center">
   <image src="https://img.shields.io/badge/Implementation-Python%203.9-%2300A3E0?style=flat-square">
+  <image src="https://img.shields.io/badge/version-0.5-blue">
+  <image src="https://img.shields.io/badge/Work%20In%20Progress-True-success">
+  <image src="https://img.shields.io/tokei/lines/github/xyLotus/DocumentPy?label=Total%20lines&style=flat-square">
 </p>
 
 <p>DocumentPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.</p>
