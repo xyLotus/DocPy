@@ -10,7 +10,7 @@
 ## Document Editing Commands
 | Command       | Arguments         | Porpuse                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
-| paragraph, p  | Text              | Creating a paragraph with a given text                   |
+| ´paragraph, p´  | Text              | Creating a paragraph with a given text                   |
 | header, h     | Size, Text        | Creating a header with the given text and size           |
 | coloring, c   | Color             | Changing the auto coloring of a HTML Document Element    |
 
