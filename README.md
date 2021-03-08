@@ -27,6 +27,6 @@ DocumentPy is a Python application that runs in a commandline interface environm
 | Command       | Arguments         | Porpuse                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
 | out           | Output_Text       | Outputs text into the commandline interface environment  |
-| cls           | -----------       | Clears all the commandline interface input/output        |
+| cls           |                   | Clears all the commandline interface input/output        |
 | exit          | -----------       | Exits the program                                        |
 | getfile       | -----------       | Outputs the current file the commandline is workng in    |
