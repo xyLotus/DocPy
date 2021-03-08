@@ -5,7 +5,7 @@
 </p>
 
 
-DocumentPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.
+<p>DocumentPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.</p>
 
 # Document Editing Commands
 | Command       | Arguments         | Porpuse                                                  |
