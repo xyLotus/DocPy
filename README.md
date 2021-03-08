@@ -8,11 +8,11 @@
 DocumentPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.
 
 # Document Editing Commands
-| Command       | Arguments         | Porpuse                                                |
-| ------------- | ----------------- | ------------------------------------------------------ |
-| paragraph, p  | Text              | Creating a paragraph with a given text                 |
-| header, h     | Size, Text        | Creating a header with the given text and size         |
-| coloring, c   | Color             | Changing the auto coloring of a HTML Document Element  |
+| Command       | Arguments         | Porpuse                                                  |
+| ------------- | ----------------- | -------------------------------------------------------- |
+| paragraph, p  | Text              | Creating a paragraph with a given text                   |
+| header, h     | Size, Text        | Creating a header with the given text and size           |
+| coloring, c   | Color             | Changing the auto coloring of a HTML Document Element    |
 
 # Document Information Commands
 | Command       | Arguments         | Porpuse                                                  |
@@ -23,7 +23,6 @@ DocumentPy is a Python application that runs in a commandline interface environm
 | author        | New_Author        | Changes the author to the given author in the document   |
 
 # Commandline Flow Control Commands
-
 | Command       | Arguments         | Porpuse                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
 | out           | Output_Text       | Outputs text into the commandline interface environment  |
