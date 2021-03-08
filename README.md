@@ -1,6 +1,8 @@
 <h1 align="center">DocumentPy</h1>
 
-![Implementation](https://img.shields.io/badge/Implementation-Python%203.9-%2300A3E0?logo=python)
+<p align="center">
+  <image src="https://img.shields.io/badge/Implementation-Python%203.9-%2300A3E0?style=flat-square">
+</p>
 
 
 DocPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.
