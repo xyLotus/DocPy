@@ -138,6 +138,7 @@ class Commands:
     """ Commands class responsible for storing methods, that will get reflected. [See: C# Reflection] """
     def __init__(self):
         self.auto_coloring = True
+        self.next_line = True
         self.auto_color = 'black'
     
     #====FileCommands====#
@@ -410,26 +411,43 @@ class Commandline:
         
     def run(self):
         """ Method that runs the (runtime) endless cmd loop. """
+        no_check_func = [
+                        'cls', 
+                        'new', 
+                        'open', 
+                        'getfile', 
+                        'out', 
+                        'exit', 
+                        'coloring', 
+                        'c',
+                        'nextline']
+        
+        no_nextline_funcs = ['cls']
+        
         while 1:
             raw_cmd = input(f'{self.prefix} ').split()
             if not len(raw_cmd) == 0:
                 base_cmd = raw_cmd[0]
                 cmd_args = raw_cmd[1:]
                 try:
-                    no_check_func = ['cls', 'new', 'open', 'getfile', 'out', 'exit']
                     if base_cmd in no_check_func:
                         call_method(cmds, base_cmd, cmd_args)
+                        if cmds.next_line:
+                            if not base_cmd in no_nextline_funcs:
+                                print()
                     else:
                         if len(file_stream.file) == 0:
                             error('FileStream file attribute is not defined')
                             print('| -> Create A File: "new file_name" - Open A File: "open file_name"')
                         else:
                             call_method(cmds, base_cmd, cmd_args)
+                            if cmds.next_line:
+                                if not base_cmd in no_nextline_funcs:
+                                    print()
                 except AttributeError:
                     error(f'Command [{base_cmd}] could not be found')
                 except IndexError:
                     error(f'Command [{base_cmd}] requires more than the [{len(cmd_args)}] given arguments')
-                
 
 # Commandline init
 cmdl = Commandline()
