@@ -25,10 +25,7 @@ if not os.path.isfile(f'{os.getcwd()}\\backup.txt'):
 # Global Functions
 def call_method(cls: object, function: str, args: list):
     """ Calls method from given class, with given arguments """
-    try:
-        getattr(cls, function)(args)
-    except Exception:
-        getattr(cls, function)('')
+    getattr(cls, function)(args)
 
 def error(txt: str):
     """ Outputs string in error format. """
