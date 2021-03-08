@@ -39,9 +39,9 @@ If you, for example, have some kind of new project on the line and want to quick
 | `getfile`       |                   | Outputs the current file the commandline is workng in  |
 
 ## Requirements
-- **![Python 3.9](https://www.python.org)**
-- **![Python, bs4](https://pypi.org/project/beautifulsoup4)**
-- **![Python, stdlib](https://docs.python.org/3/library)**
+- **[Python 3.9](https://www.python.org)**
+- **[Python, bs4](https://pypi.org/project/beautifulsoup4)**
+- **[Python, stdlib](https://docs.python.org/3/library)**
 
 ## Contact
 Discord: Lotus#1095
