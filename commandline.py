@@ -18,7 +18,7 @@ except ImportError as e:
     print('Traceback:\n', e)
 
 # Create Back-up File
-if not os.path.isfile(f'{os.getcwd()}\\backup.txt'):
+if not os.path.isfile(f'{os.getcwd()}/backup.txt'):
     with open('backup.txt', 'w'):
         pass
 
@@ -66,7 +66,7 @@ class FileStream:
         #===FileContentVar===#
         cwd = os.getcwd()
         try:
-            with open(f'{cwd}\\skeleton.html', 'r') as f:
+            with open(f'{cwd}/skeleton.html', 'r') as f:
                 self.skeleton = f.read()
         except Exception as e:
             # Error Stacktraceback & Exit
@@ -148,7 +148,7 @@ class Commands:
             file_stream.open_bool = True
 
         cwd = os.getcwd()
-        if os.path.isfile(f'{cwd}\\{args[0]}'):
+        if os.path.isfile(f'{cwd}/{args[0]}'):
             file_stream.file = args[0]
 
             with open(file_stream.file, 'r') as f:
@@ -164,7 +164,7 @@ class Commands:
         """ Method that creates a new file. """
         file_stream.new_bool = True
         cwd = os.getcwd()
-        if not os.path.isfile(f'{cwd}\\{args[0]}'):
+        if not os.path.isfile(f'{cwd}/{args[0]}'):
             print(f'Creating [{args[0]}]...')
 
             file_stream.file = args[0]
