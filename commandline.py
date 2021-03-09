@@ -19,7 +19,7 @@ except ImportError as e:
 
 # Create Back-up File
 if not os.path.isfile(f'{os.getcwd()}\\backup.txt'):
-    with open('backup.txt', 'x'):
+    with open('backup.txt', 'w'):
         pass
 
 # Global Functions
