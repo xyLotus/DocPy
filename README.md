@@ -7,7 +7,7 @@
   <image src="https://img.shields.io/tokei/lines/github/xyLotus/DocumentPy?label=Total%20lines&style=flat-square">
 </p>
 
-<p>DocumentPy is a Python application that runs in a commandline interface environment, made for creating HTML documents.</p>
+<p>DocumentPy is a Python application that runs in a command-line interface environment, made for creating HTML documents.</p>
 
 ## Usage
 ![Preview](https://user-images.githubusercontent.com/59749700/110297228-8af49f80-7ff3-11eb-9e83-e92aa595b7e8.gif)
