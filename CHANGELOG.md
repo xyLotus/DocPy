@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 - This changelog
 - "code" command
 - "c" code command alternative
+- skeleton.html file mark @top
 
 ### Fixed
 - Grammar in README
