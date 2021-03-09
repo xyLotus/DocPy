@@ -9,9 +9,15 @@ All notable changes to this project will be documented in this file.
 - "c" code command alternative
 - skeleton.html file mark @top
 
+### Removed
+- README, Requirements, Python stdlib
+
 ### Fixed
 - Grammar in README
 - Recursive reflection behaviour method calling function
+
+## Changed
+- README, Requirements, Python bs4 to BeautifulSoup 4
 
 ### Removed
 - Undo Command
