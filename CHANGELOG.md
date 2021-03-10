@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 - "code" command
 - "c" code command alternative
 - skeleton.html file mark @top
-- alternative file of commandline.py made just in case
+- alternative file of commandline.py
 
 ### Removed
 - README, Requirements, Python stdlib
