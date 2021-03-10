@@ -5,7 +5,7 @@ It is also very handy for creating HTML Documentations.
 """
 
 __author__ = 'Lotus'
-__version__ = 0.5
+__version__ = 0.6
 
 # Imports
 import os
