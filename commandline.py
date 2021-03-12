@@ -26,6 +26,9 @@ if not platform in ['Windows', 'Linux']:
     print('Compatible platforms: Windows, Linux.')
     exit()
 
+clear_commands = {'Windows': 'cls', 'Linux': 'clear'}
+clear_command = clear_commands[platform]
+
 # Setting title for commandline
 os.system('title Commandline Interface Environment')
 
@@ -275,7 +278,7 @@ class Commands:
 
     def cls(self, args):
         """ Method that clears the commandline interface. """
-        os.system('cls')
+        os.system(clear_command)
     
     def exit(self, args):
         """ Method that exits the program. """
