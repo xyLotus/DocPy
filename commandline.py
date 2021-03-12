@@ -30,7 +30,8 @@ clear_commands = {'Windows': 'cls', 'Linux': 'clear'}
 clear_command = clear_commands[platform]
 
 # Setting title for commandline
-os.system('title Commandline Interface Environment')
+if platform == 'Windows':
+    os.system('title Commandline Interface Environment')
 
 # Create Back-up File
 if not os.path.isfile(f'{os.getcwd()}/backup.html'):
