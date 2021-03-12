@@ -29,7 +29,7 @@ if not platform in ['Windows', 'Linux']:
 clear_commands = {'Windows': 'cls', 'Linux': 'clear'}
 clear_command = clear_commands[platform]
 
-# Setting title for commandline
+# Setting title for commandline if platform is Win
 if platform == 'Windows':
     os.system('title Commandline Interface Environment')
 
@@ -157,12 +157,15 @@ class FileStream:
                 return
             line_count += 1
 
-    def update_doc(self, content: str):
+    def update_doc(self, content: str, fin_seq: bool = False):
         """ Method that updates htmldoc with prettified HTML and inserted {config}. """
         pretty_content = get_prettify(content)
 
-        self.insert_content_tag(pretty_content, ' </body>')
-        reformated_content = self.file_str
+        if not fin_seq:
+            self.insert_content_tag(pretty_content, ' </body>')
+            reformated_content = self.file_str
+        else:
+            reformated_content = content
         
         with open(self.file, 'w') as f:
             f.write(get_prettify(reformated_content))
@@ -209,8 +212,10 @@ class Commands:
         if not file_stream.new_bool:
             file_stream.open_bool = True
 
+        doc.content = ''
+
         cwd = os.getcwd()
-        if os.path.isfile(f'{cwd}\\{args[0]}'):
+        if os.path.isfile(f'{cwd}/{args[0]}'):
             file_stream.file = args[0]
 
             with open(file_stream.file, 'r') as f:
@@ -219,6 +224,7 @@ class Commands:
             file_stream.insert_content_tag(file_stream.file_str, '  </body>')
         else:
             error(f'Couldnt find [{args[0]}]')
+            exit()
         
         print(f'Opened [{args[0]}]!')
 
@@ -226,11 +232,11 @@ class Commands:
         """ Method that creates a new file. """
         file_stream.new_bool = True
         cwd = os.getcwd()
-        if not os.path.isfile(f'{cwd}\\{args[0]}'):
+        if not os.path.isfile(f'{cwd}/{args[0]}'):
             print(f'Creating [{args[0]}]...')
 
             file_stream.file = args[0]
-            with open(args[0], 'x'):
+            with open(args[0], 'w'):
                 pass
             
             file_stream.init_skeleton()
@@ -238,7 +244,7 @@ class Commands:
         else:
             error(f'File [{args[0]}] already exists.')
 
-    def reload(self, args):
+    def reload(self, args, fin_seq: bool = False):
         """ Method that reloads current htmldoc with the new given elements. """
         print('Warning: You will not be able to change your changes later on.')
         print('Are you sure that you want to save these changes? (Y/N)')
@@ -246,10 +252,9 @@ class Commands:
         if answer.upper() == 'Y':
             print('Saving changes...')
             if file_stream.open_bool:
-                doc.content = ''
                 content_instance = file_stream.file_str.format(content = doc.content)
                 
-                file_stream.update_doc(content_instance)
+                file_stream.update_doc(content_instance, fin_seq)
             else:
                 content_instance = file_stream.file_str.format(
                                     title = doc.title, 
@@ -258,7 +263,7 @@ class Commands:
                                     author = doc.author, 
                                     content = doc.content )
 
-                file_stream.update_doc(content_instance)
+                file_stream.update_doc(content_instance, fin_seq)
 
             print(f'Updated [{file_stream.file}]!')
         elif answer.upper() == 'N':
@@ -317,6 +322,10 @@ class Commands:
     #====================#
 
     #====FileEditing====#
+    def finish(self, args):
+        """ Upon calling this command the {content} tag will not be inserted & exit seq. """
+        self.reload(args = '', fin_seq = True)
+
     def nextline(self, args):
         r""" Command responsible for either inserting a \n at end of a </tag> or not. """
         pass
@@ -388,6 +397,10 @@ class Commands:
     #=================#
 
     #===CommandAlternatives===#
+    def fin(self, args):
+        """ Upon calling this command the {content} tag will not be inserted & exit seq. """
+        # NOTE -> This is a alternative version of the finish method
+        self.reload(args = '', fin_seq = True)
     def c(self, args):
         """ Creates code tag with given content. """
         # Command Info: (NOTE -> zero-indexed)
