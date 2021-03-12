@@ -33,7 +33,7 @@ clear_command = clear_commands[platform]
 os.system('title Commandline Interface Environment')
 
 # Create Back-up File
-if not os.path.isfile(f'{os.getcwd()}\\backup.html'):
+if not os.path.isfile(f'{os.getcwd()}/backup.html'):
     with open('backup.html', 'w'):
         pass
 
@@ -91,7 +91,7 @@ class FileStream:
         #===FileContentVar===#
         cwd = os.getcwd()
         try:
-            with open(f'{cwd}\\skeleton.html', 'r') as f:
+            with open(f'{cwd}/skeleton.html', 'r') as f:
                 self.skeleton = f.read()
         except Exception as e:
             # Error Stacktraceback & Exit
