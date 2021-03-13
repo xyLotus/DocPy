@@ -1,6 +1,21 @@
  <h1 align="center">Changelog</h1>
 All notable changes to this project will be documented in this file.
 
+## [0.7] - 2021-03-13
+### Added
+- Linux / Win support -> cls command
+- Linux / Win support -> env title
+- finish command
+- finish alternative command -> fin
+- full background command
+- background alternative command -> bg
+
+### Removed
+- change_prefix method (not callable for user)
+- nextline method / command (functionality)
+
+### Fixed
+- Reload method / command
 
 ## [0.6] - 2021-03-08
 ### Added
