@@ -40,8 +40,8 @@ If you, for example, have some kind of new project on the line and want to quick
 | ------------- | ----------------- | -------------------------------------------------------- |
 | `new`         |  *File_Name*        | Creates a new file with the given name and sets it to the session's file |
 | `open`        |  *File_Name*        | Opens given file and adds the {content} tag for further editing |
-| `reload`      |                     | Reloads given file with current {content} aka. refresh |
 | `out`           | *Output_Text*     | Outputs text into the commandline interface environment|
+| `reload`      |                     | Reloads given file with current {content} aka. refresh |
 | `cls`           |                   | Clears all the commandline interface input/output      |
 | `exit`          |                   | Exits the program                                      |
 | `getfile`       |                   | Outputs the current file the commandline is workng in  |
