@@ -246,8 +246,12 @@ class Commands:
 
     def reload(self, args, fin_seq: bool = False):
         """ Method that reloads current htmldoc with the new given elements. """
-        print('Warning: You will not be able to change your changes later on.')
-        print('Are you sure that you want to save these changes? (Y/N)')
+        if fin_seq:
+            print(r'File will be finalized, {content} tag removed.')
+            print('You can start editing the file again by using the "open [file_name]" command')
+        else:
+            print('Warning: You will not be able to change your changes later on.')
+            print('Are you sure that you want to save these changes? (Y/N)')
         answer = input('           -> ')
         if answer.upper() == 'Y':
             print('Saving changes...')
@@ -288,6 +292,7 @@ class Commands:
     
     def exit(self, args):
         """ Method that exits the program. """
+        self.finish('')
         exit()
     
     def getfile(self, args):
