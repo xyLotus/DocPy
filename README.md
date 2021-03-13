@@ -20,9 +20,11 @@ If you, for example, have some kind of new project on the line and want to quick
 | ------------- | ----------------- | -------------------------------------------------------- |
 | `paragraph, p`  | *Text*              | Creating a paragraph with a given text                   |
 | `header, h`     | *Size, Text*       | Creating a header with the given text and size           |
-| `coloring, c `  | *Color*            | Changing the auto coloring of a HTML Document Element    |
-| `background, bg`| *Background_Color*| Changes the doc's background to the given bg color     | 
-
+| `code, c`       | *Code_Text*        | Creating a code tag element with the given text          |
+| `coloring, ac`  | *Color*            | Changing the auto coloring of a HTML Document Element    |
+| `background, bg`| *Background_Color*| Changes the doc's background to the given bg color     |
+| `finish, fin`   |                   | Finalizes the document and removes the {document} tag |
+| `delete (unstable)`        |                   | Deletes all the current saved body content (session related) |
 
 ### Document Information Editing Commands
 | Command       | Arguments         | Purpose                                                  |
@@ -36,6 +38,9 @@ If you, for example, have some kind of new project on the line and want to quick
 ### Commandline IO & Flow Control Commands
 | Command       | Arguments         | Purpose                                                  |
 | ------------- | ----------------- | -------------------------------------------------------- |
+| `new`         |  *File_Name*        | Creates a new file with the given name and sets it to the session's file |
+| `open`        |  *File_Name*        | Opens given file and adds the {content} tag for further editing |
+| `reload`      |                     | Reloads given file with current {content} aka. refresh |
 | `out`           | *Output_Text*     | Outputs text into the commandline interface environment|
 | `cls`           |                   | Clears all the commandline interface input/output      |
 | `exit`          |                   | Exits the program                                      |
