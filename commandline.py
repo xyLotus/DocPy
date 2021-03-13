@@ -269,7 +269,7 @@ class Commands:
 
                 file_stream.update_doc(content_instance, fin_seq)
 
-            print(f'Updated [{file_stream.file}]!')
+                print(f'Updated [{file_stream.file}]!')
         elif answer.upper() == 'N':
             print('Changes not saved.')
         doc.content = ''
@@ -309,21 +309,25 @@ class Commands:
         """ Sets title for htmldoc. """
         doc.title = args[0]
         file_stream.backup()
+        print('Set title to [', doc.title, ']')
     
     def charset(self, args):
         """ Sets charset for htmldoc. """
         doc.charset = args[0]
         file_stream.backup()
+        print('Set charset to [', doc.charset, ']')
 
     def author(self, args):
         """ Sets author for htmldoc. """
         doc.author = args[0]
         file_stream.backup()
+        print('Set author to [', doc.author, ']')
 
     def lang(self, args):
         """ Sets language for htmldoc. """
         doc.lang = args[0]
         file_stream.backup()
+        print('Set lang to [', doc.lang, ']')
     #====================#
 
     #====FileEditing====#
@@ -338,6 +342,7 @@ class Commands:
     def background(self, args):
         """ Command that sets background color in htmldoc. """
         doc.background = args[0]
+
 
     def delete(self, args):
         """ Command that deletes everything in content. """
@@ -475,10 +480,6 @@ class Commandline:
     """ Commandline Interface Environment Class. """
     def __init__(self):
         self.prefix: str = '-$'
-    
-    def change_prefix(self, new_prefix: str):
-        """ Method that, you guessed it, changes the cmdl prefix. """
-        self.prefix = new_prefix 
         
     def run(self):
         """ Method that runs the (runtime) endless cmd loop. """
@@ -518,7 +519,8 @@ class Commandline:
                 except AttributeError as e:
                     print('Error -> ', e)
                     error(f'Command [{base_cmd}] could not be found')
-                except IndexError:
+                except IndexError as e:
+                    print(e)
                     error(f'Command [{base_cmd}] requires more than the [{len(cmd_args)}] given arguments')
 
 # Commandline init
