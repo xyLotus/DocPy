@@ -248,12 +248,12 @@ class Commands:
         """ Method that reloads current htmldoc with the new given elements. """
         if fin_seq:
             print(r'File will be finalized, {content} tag removed.')
-            print('You can start editing the file again by using the "open [file_name]" command')
+            print('You can start editing the file again by using the "open [file_name]" command (Y/N)')
         else:
             print('Warning: You will not be able to change your changes later on.')
             print('Are you sure that you want to save these changes? (Y/N)')
         answer = input('           -> ')
-        if answer.upper() == 'Y':
+        if answer.upper() in ['Y', '', ' ']:
             print('Saving changes...')
             if file_stream.open_bool:
                 content_instance = file_stream.file_str.format(content = doc.content)
@@ -342,7 +342,7 @@ class Commands:
     def background(self, args):
         """ Command that sets background color in htmldoc. """
         doc.background = args[0]
-
+        print('Set background to [', doc.background, ']')
 
     def delete(self, args):
         """ Command that deletes everything in content. """
